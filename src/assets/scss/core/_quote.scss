@@ -1,0 +1,26 @@
+/* ==========================================================================
+   quote
+   ========================================================================== */
+
+.quote {
+    margin: 0;
+    padding: 6rem 6rem 6rem 15.4rem;
+
+    background-color: $color-greyscale-300;
+
+    border-left: .6rem solid $color-greyscale-000;
+}
+
+.quote__quote {
+    margin: 0;
+
+    font-size: 2vw;
+    font-family: $font-family--headings;
+}
+
+.quote__author {
+    margin-top: 3rem;
+
+    font-size: 1.8rem;
+    font-weight: $font-weight--light;
+}

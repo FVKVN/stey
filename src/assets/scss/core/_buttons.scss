@@ -1,0 +1,209 @@
+/* ==========================================================================
+   buttons
+   ========================================================================== */
+
+@mixin button-reset {
+    padding: 0;
+
+    background: none;
+    box-shadow: none;
+
+    border-radius: 0;
+    border: none;
+
+    text-decoration: none;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.button {
+    @include button-reset();
+    position: relative;
+
+    overflow: hidden;
+    padding: 15px 25px;
+    display: block;
+    width: 100%;
+
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: $font-weight--medium;
+    color: $color-greyscale-300;
+
+    &:focus {
+        outline: 2px dashed $color-focus;
+        outline-offset: 2px;
+
+        text-decoration: none;
+    }
+
+    &:active {
+        outline: none;
+    }
+
+    &:before {
+        top: 0;
+        left: 0;
+
+        transform: translate3d(-100%, 0, 0);
+
+        clip-path:
+            polygon(
+                0 0,
+                calc(100% - 40px) 0,
+                100% 100%,
+                0 100%
+            );
+    }
+
+    &:after {
+        top: 0;
+        right: 0;
+
+        transform: translate3d(100%, 0, 0);
+
+        clip-path:
+            polygon(
+                0 0,
+                100% 0,
+                100% 100%,
+                40px 100%
+            );
+    }
+
+    &:after,
+    &:before {
+        @include snip-pseudo();
+
+        z-index: 0;
+
+        width: calc(50% + 20px);
+        height: 100%;
+
+        background: $color-greyscale-300;
+        mix-blend-mode: difference;
+
+        transition: transform .3s $snip-ease-sine-in-out;
+    }
+
+    &:not(:disabled) {
+        @include hover() {
+            text-decoration: none;
+
+            &:before,
+            &:after {
+                transform: none;
+            }
+        }
+    }
+
+    @include nonKeyboardfocus() {
+        outline: none;
+    }
+
+    @media (min-width: $screen-md-min) {
+        padding: 25px 50px;
+        display: inline-block;
+        width: auto;
+
+        font-size: 20px;
+    }
+}
+
+.button--primary {
+    border: 1px solid $color-greyscale-300;
+
+    color: $color-greyscale-300;
+}
+
+.button__inner {
+    position: relative;
+    z-index: 1;
+}
+
+.button--sm {
+    padding: 10px 15px;
+
+    font-size: 13px;
+
+    @media (min-width: $screen-sm-min) {
+        display: inline-block;
+        width: auto;
+    }
+
+    @media (min-width: $screen-md-min) {
+        padding: 15px 20px;
+
+        font-size: 18px;
+    }
+}
+
+.button.button--secondary {
+    border: 1px solid $color-greyscale-000;
+
+    color: $color-greyscale-000;
+
+    &:after,
+    &:before {
+        mix-blend-mode: normal;
+        background-color: $color-greyscale-000;
+    }
+
+    &:not(:disabled) {
+        @include hover() {
+            color: $color-greyscale-300;
+        }
+    }
+}
+
+.button--loading {
+    &:before {
+        width: 100%;
+        clip-path: none;
+
+        animation: moveX 2s $snip-ease-sine-out infinite;
+    }
+
+    &:after {
+        display: none;
+    }
+}
+
+@keyframes moveX {
+    0% {
+        transform: translate3d(-100%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-0, 0, 0);
+    }
+}
+
+.icon-button {
+    @include button-reset();
+
+    display: flex;
+    align-items: center;
+
+    &:focus {
+        outline: 2px dashed $color-focus;
+        outline-offset: 2px;
+
+        text-decoration: none;
+    }
+
+    @include nonKeyboardfocus() {
+        outline: none;
+    }
+}
+
+.icon-button__icon {
+    display: block;
+    width: 20px;
+
+    .icon-button--icon-right & {
+        margin-left: 10px;
+    }
+}

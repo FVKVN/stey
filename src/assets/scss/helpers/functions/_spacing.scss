@@ -1,0 +1,9 @@
+/* ==========================================================================
+   spacing
+   ========================================================================== */
+
+@function spacing($spacing: null, $spacing-group: null) {
+    @if ($spacing != null) {
+        @return deep-get($key: $spacing, $level: $spacing-group, $map: $spacings);
+    }
+}

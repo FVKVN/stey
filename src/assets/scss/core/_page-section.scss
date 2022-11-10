@@ -1,0 +1,41 @@
+/* ==========================================================================
+   page section
+   ========================================================================== */
+
+.page-section {
+    width: 100%;
+    min-height: calc(100vh - 6rem);
+}
+
+.page-section__content {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+
+    &--wide {
+        max-width: 1400px;
+    }
+
+    &--narrow {
+        max-width: 1000px;
+    }
+
+    @media (min-width: $screen-md-min) {
+    }
+}
+
+.page-section__header {
+    position: sticky;
+    top: 0;
+    z-index: 0;
+
+    padding: 3rem;
+    width: 100%;
+    margin-bottom: -12vw;
+}
+
+.page-section__body {
+    position: relative;
+    z-index: 1;
+}

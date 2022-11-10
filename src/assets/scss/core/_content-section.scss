@@ -1,0 +1,20 @@
+/* ==========================================================================
+   content section
+   ========================================================================== */
+
+.content-section__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.content-section__body {
+    width: 100%;
+    max-width: 110rem;
+}
+
+.content-section__body__content {
+    p {
+        padding: 0 6rem 0 16rem;
+    }
+}

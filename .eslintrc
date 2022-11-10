@@ -1,0 +1,18 @@
+{
+    "root": true,
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "globals": {
+      "google": "readonly",
+      "showAuth0": "readonly",
+      "Cookiebot": "readonly",
+      "dataLayer": "readonly"
+    },
+    "extends": ["./node_modules/@kunstmaan/eslint-config/index.js"],
+    "rules": {
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["gulpfile.babel.js", "./groundcontrol/**/*.js"]}],
+      "no-new": 0
+    }
+  }
